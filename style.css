@@ -1,0 +1,200 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+#DocumentFrame {
+    position: relative;
+    height: 1080px;
+    background: url(images/RussiaAmarantBlueDark.jpg) center center/cover
+        no-repeat;
+}
+
+#StartGame {
+    position: absolute;
+    width: 542px;
+    height: 400px;
+    left: calc(50% - 271px);
+    top: calc(50% - 200px);
+    background: #d7f5f7;
+    border: 10px ridge #000000;
+}
+
+#StartGame h1 {
+    display: block;
+    margin-top: 34px;
+    font-family: "Phosphate";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 50px;
+    align-items: center;
+    text-align: center;
+    color: #000000;
+}
+
+#WarshipImg {
+    display: block;
+    margin: 0 auto;
+    margin-top: 36px;
+}
+
+#StartGame h2 {
+    display: block;
+    margin: 0 autu;
+    margin-top: 36px;
+    font-family: "Phosphate";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 35px;
+    line-height: 44px;
+    align-items: center;
+    text-align: center;
+    color: #000000;
+}
+
+#StartGame h2 span {
+    color: #19665d;
+}
+
+#StartButton {
+    display: block;
+    width: 159px;
+    height: 60px;
+    margin: 0 auto;
+    margin-top: 30px;
+    background: #19665d;
+    /* Button text */
+    font-family: "Phosphate";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 35px;
+    line-height: 44px;
+    align-items: center;
+    text-align: center;
+    color: #000000;
+}
+
+#EndGame {
+    position: absolute;
+    width: 542px;
+    height: 400px;
+    left: calc(50% - 271px);
+    top: calc(50% - 200px);
+    background: #d7f5f7;
+    border: 10px ridge #000000;
+}
+
+#EndGame h2 {
+    display: block;
+    margin-top: 34px;
+    font-family: "Phosphate";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 50px;
+    align-items: center;
+    text-align: center;
+    color: #000000;
+}
+
+#DestroyedShipsCnt {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    left: 140px;
+    top: 136px;
+    font-family: "Phosphate";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 50px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #000000;
+}
+
+#EndGame img {
+    display: block;
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
+    margin-top: 36px;
+}
+
+#EndGame h3 {
+    display: block;
+    margin: 0 autu;
+    margin-top: 36px;
+    font-family: "Phosphate";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 35px;
+    line-height: 44px;
+    align-items: center;
+    text-align: center;
+    color: #000000;
+}
+
+#EndGame h3 span {
+    color: #19665d;
+}
+
+#GameReloadButton {
+    display: block;
+    width: 159px;
+    height: 60px;
+    margin: 0 auto;
+    margin-top: 30px;
+    background: #19665d;
+    /* Button text */
+    font-family: "Phosphate";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 35px;
+    line-height: 44px;
+    align-items: center;
+    text-align: center;
+    color: #000000;
+}
+
+#GameArea {
+    position: absolute;
+    width: 928px;
+    height: 980px;
+    left: calc(50% - 464px);
+    top: calc(50% - 490px);
+    background: rgba(4, 2, 3, 0.8);
+    border: 15px solid #d7f5f7;
+}
+
+#ShipsCounter {
+    position: absolute;
+    width: 240px;
+    height: 82px;
+    left: calc(100% - 120px);
+    top: calc(100% - 41px);
+    font-family: "Phosphate";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 35px;
+    line-height: 44px;
+    align-items: center;
+    color: #ffffff;
+}
+
+#FuckingWarship {
+    position: absolute;
+    width: 130px;
+    height: 130px;
+    left: calc(50% - 65px);
+}
+
+#Airplane {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    left: calc(50% - 75px);
+    top: calc(100% - 150px);
+}
