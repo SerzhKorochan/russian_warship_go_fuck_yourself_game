@@ -25,7 +25,7 @@
     margin-top: 34px;
     font-family: "Phosphate";
     font-style: normal;
-    font-weight: 400;
+    font-weight: bold;
     font-size: 40px;
     line-height: 50px;
     align-items: center;
@@ -45,7 +45,7 @@
     margin-top: 36px;
     font-family: "Phosphate";
     font-style: normal;
-    font-weight: 400;
+    font-weight: bold;
     font-size: 35px;
     line-height: 44px;
     align-items: center;
@@ -67,7 +67,7 @@
     /* Button text */
     font-family: "Phosphate";
     font-style: normal;
-    font-weight: 400;
+    font-weight: bold;
     font-size: 35px;
     line-height: 44px;
     align-items: center;
@@ -90,7 +90,7 @@
     margin-top: 34px;
     font-family: "Phosphate";
     font-style: normal;
-    font-weight: 400;
+    font-weight: bold;
     font-size: 40px;
     line-height: 50px;
     align-items: center;
@@ -106,7 +106,7 @@
     top: 136px;
     font-family: "Phosphate";
     font-style: normal;
-    font-weight: 400;
+    font-weight: bold;
     font-size: 40px;
     line-height: 50px;
     display: flex;
@@ -129,7 +129,7 @@
     margin-top: 36px;
     font-family: "Phosphate";
     font-style: normal;
-    font-weight: 400;
+    font-weight: bold;
     font-size: 35px;
     line-height: 44px;
     align-items: center;
@@ -151,7 +151,7 @@
     /* Button text */
     font-family: "Phosphate";
     font-style: normal;
-    font-weight: 400;
+    font-weight: bold;
     font-size: 35px;
     line-height: 44px;
     align-items: center;
@@ -177,7 +177,7 @@
     top: calc(100% - 41px);
     font-family: "Phosphate";
     font-style: normal;
-    font-weight: 400;
+    font-weight: bold;
     font-size: 35px;
     line-height: 44px;
     align-items: center;
