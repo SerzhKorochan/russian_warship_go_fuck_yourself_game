@@ -32,15 +32,17 @@
     color: #000000;
 }
 
+
 #WarshipImg {
-    /*display: block;*/
-    margin: 0 auto;
+    width: 80px;
+    height: 80px;
     margin-top: 23px;
+    margin-left: calc(50% - 40px);
+    left: 136px;
 }
 
 #StartGame h2 {
-    /*display: block;*/
-    margin: 0 autu;
+    margin: 0 auto;
     margin-top: 23px;
     font-family: "Phosphate";
     font-style: normal;
@@ -57,10 +59,9 @@
 }
 
 #StartButton {
-    /*display: block;*/
     width: 159px;
     height: 60px;
-    margin: 0 auto;
+    margin: calc(50% - 80px);
     margin-top: 50px;
     background: #19665d;
     /* Button text */
