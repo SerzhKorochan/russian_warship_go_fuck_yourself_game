@@ -21,7 +21,6 @@
 }
 
 #StartGame h1 {
-    display: block;
     margin-top: 34px;
     font-family: "Phosphate";
     font-style: normal;
@@ -34,13 +33,13 @@
 }
 
 #WarshipImg {
-    display: block;
+    /*display: block;*/
     margin: 0 auto;
     margin-top: 23px;
 }
 
 #StartGame h2 {
-    display: block;
+    /*display: block;*/
     margin: 0 autu;
     margin-top: 23px;
     font-family: "Phosphate";
@@ -58,7 +57,7 @@
 }
 
 #StartButton {
-    display: block;
+    /*display: block;*/
     width: 159px;
     height: 60px;
     margin: 0 auto;
@@ -74,6 +73,10 @@
     text-align: center;
     color: #000000;
     border: none;
+}
+
+#start button:hover {
+    background: #8a7868;
 }
 
 #DestroyedShipsBlock {
@@ -177,10 +180,10 @@
 
 #ShipsCounter {
     position: absolute;
-    width: 440px;
+    width: 300px;
     height: 82px;
-    left: calc(100% - 290px);
-    top: calc(100% - 41px);
+    left: calc(100% - 300px);
+    top: calc(100% - 82px);
     font-family: "Phosphate";
     font-style: normal;
     font-weight: bold;
@@ -207,8 +210,8 @@
 }
 
 .bullet {
-    width: 3px;
-    height: 10px;
+    width: 7px;
+    height: 14px;
     background: #fefbfe;
     border-radius: 2px 5px 5px 2px;
     position: absolute;

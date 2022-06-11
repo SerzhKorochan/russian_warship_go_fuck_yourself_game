@@ -2,19 +2,25 @@
 var gameWindow = document.querySelector("#GameArea");
 var startWindow = document.querySelector("#StartGame");
 var endWindow = document.querySelector("#EndGame");
-
+var btnStart = document.querySelector("#StartButton");
+var btnReload = document.querySelector("#GameReloadButton");
 
 // dinamic objects
 var plane = document.querySelector("#Airplane");
 var gameOver = false;
 
 // counters-indicators
-
+var shipCounter = 999;
 
 // var planeDirection = 0;
 // var planeSpeed = 100; // so we can modificate planeSpeed in game;
 
 // startGame
+startWindow.style = "block";
+btnStart.onclick = function(){
+	startWindow.style = "none";
+	gameWindow.style = "block";
+}
 
 
 // driving the plane
@@ -46,13 +52,24 @@ function movePlane(event){
  * 
  * 
  */
-
+var pause = false; // timout for shooting;
 function shooting(event) {
-	if (event.keyCode == 32){ // press -space-
+	if (event.keyCode == 32 && pause == false){ // press -space-
 		bulletShoot("blue", 45, 45, 1);
 		bulletShoot("yellow", 105, 45, 1);
+		pause = true;
+	} else {
+		setTimeout(function() {
+			console.log("boom");
+		}, 1000);
+		pause = false;
 	}
 }
+
+/**
+ * 
+ * 
+ */
 
 function bulletShoot(color, centerPosition, topPosition, direction){
 		var bullet = document.createElement("div");
@@ -64,6 +81,11 @@ function bulletShoot(color, centerPosition, topPosition, direction){
 		bullet.style.top = plane.offsetTop + direction * topPosition + "px";
 		moveThing(bullet, 0);
 }
+
+/**
+ * 
+ * 
+ */
 
 function moveThing(thing, topLimit){
 	let moveID = setInterval(function() { // set timer ID;
