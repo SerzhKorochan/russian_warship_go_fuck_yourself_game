@@ -1,9 +1,20 @@
+// static objects
 var gameWindow = document.querySelector("#GameArea");
+var startWindow = document.querySelector("#StartGame");
+var endWindow = document.querySelector("#EndGame");
+
+
+// dinamic objects
 var plane = document.querySelector("#Airplane");
 var gameOver = false;
-var planeDirection = 0;
-var planeSpeed = 100; // so we can modificate planeSpeed in game;
 
+// counters-indicators
+
+
+// var planeDirection = 0;
+// var planeSpeed = 100; // so we can modificate planeSpeed in game;
+
+// startGame
 
 
 // driving the plane
@@ -38,20 +49,26 @@ function movePlane(event){
 
 function shooting(event) {
 	if (event.keyCode == 32){ // press -space-
-	var bullet = document.createElement("div");
-	bullet.className = "bullet";
-	gameWindow.appendChild(bullet);
-		bullet.style.display = "block";
-		bullet.style.left = plane.offsetLeft + 45 + "px";// y-coordinate of bullet = y-coord. of the player; 140 - to mutch gun coordinate;
-		bullet.style.top = plane.offsetTop + "px";
-		moveThing(bullet);
+		bulletShoot("blue", 45, 45, 1);
+		bulletShoot("yellow", 105, 45, 1);
 	}
 }
 
-function moveThing(thing){
+function bulletShoot(color, centerPosition, topPosition, direction){
+		var bullet = document.createElement("div");
+	bullet.className = "bullet";
+	bullet.style.background = color;
+	gameWindow.appendChild(bullet);
+		bullet.style.display = "block";
+		bullet.style.left = plane.offsetLeft + direction * centerPosition + "px";// y-coordinate of bullet = y-coord. of the player; 140 - to mutch gun coordinate;
+		bullet.style.top = plane.offsetTop + direction * topPosition + "px";
+		moveThing(bullet, 0);
+}
+
+function moveThing(thing, topLimit){
 	let moveID = setInterval(function() { // set timer ID;
 		thing.style.top = thing.offsetTop - 10 + "px"; // plane direction
-		if (thing.offsetTop < 0){
+		if (thing.offsetTop < topLimit){
 			clearInterval(moveID);
 			thing.remove();
 		}

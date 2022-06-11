@@ -177,9 +177,9 @@
 
 #ShipsCounter {
     position: absolute;
-    width: 240px;
+    width: 440px;
     height: 82px;
-    left: calc(100% - 200px);
+    left: calc(100% - 290px);
     top: calc(100% - 41px);
     font-family: "Phosphate";
     font-style: normal;
@@ -195,6 +195,7 @@
     width: 130px;
     height: 130px;
     left: calc(50% - 65px);
+    top: 21px;
 }
 
 #Airplane {
