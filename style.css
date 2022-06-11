@@ -179,7 +179,7 @@
     position: absolute;
     width: 240px;
     height: 82px;
-    left: calc(100% - 120px);
+    left: calc(100% - 200px);
     top: calc(100% - 41px);
     font-family: "Phosphate";
     font-style: normal;
@@ -203,4 +203,18 @@
     height: 150px;
     left: calc(50% - 75px);
     top: calc(100% - 150px);
+}
+
+.bullet {
+    width: 3px;
+    height: 10px;
+    background: #fefbfe;
+    border-radius: 2px 5px 5px 2px;
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    border-radius: 2px 7px 7px 2px;
+    box-shadow: 0 0 5px #fff, 0 0 8px #fff, 0 0 12px #fff, 0 0 15px red, 0 0 25px red;
+    z-index: 5;
+    display: none;
 }
