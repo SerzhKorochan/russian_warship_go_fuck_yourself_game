@@ -16,10 +16,9 @@ var shipCounter = 999;
 // var planeSpeed = 100; // so we can modificate planeSpeed in game;
 
 // startGame
-startWindow.style = "block";
 btnStart.onclick = function(){
-	startWindow.style = "none";
-	gameWindow.style = "block";
+	startWindow.style.display = "none"; // hide start window;
+	gameWindow.style.display = "block"; // show game;
 }
 
 
@@ -30,10 +29,9 @@ document.onkeydown = function(event){ // pressing keys
 	shooting(event); // arrow Space keyCode = 40
 }
 
-// <done-
 /**
- * direction	- + 1 if turn right, -1 if turn left;
- * keyCode		- keyCode of pressed key (left - 37, right - 39);  
+ * 
+ *  
  */
 
 function movePlane(event){
@@ -52,16 +50,17 @@ function movePlane(event){
  * 
  * 
  */
-var pause = false; // timout for shooting;
+
+var pause = false; // timeout for shooting;
 function shooting(event) {
 	if (event.keyCode == 32 && pause == false){ // press -space-
 		bulletShoot("blue", 45, 45, 1);
 		bulletShoot("yellow", 105, 45, 1);
-		pause = true;
+		pause = true; // shooting timeout;
 	} else {
-		setTimeout(function() {
+		setTimeout(function() { // pausing;
 			console.log("boom");
-		}, 1000);
+		}, 1000); // 1 sec.
 		pause = false;
 	}
 }
@@ -72,14 +71,14 @@ function shooting(event) {
  */
 
 function bulletShoot(color, centerPosition, topPosition, direction){
-		var bullet = document.createElement("div");
-	bullet.className = "bullet";
-	bullet.style.background = color;
-	gameWindow.appendChild(bullet);
-		bullet.style.display = "block";
+		var bullet = document.createElement("div"); // make bullet;
+	bullet.className = "bullet"; // name bullet
+	bullet.style.background = color; // styling bullet color;
+	gameWindow.appendChild(bullet); // add bullet;
+		bullet.style.display = "block"; // display bullet;
 		bullet.style.left = plane.offsetLeft + direction * centerPosition + "px";// y-coordinate of bullet = y-coord. of the player; 140 - to mutch gun coordinate;
-		bullet.style.top = plane.offsetTop + direction * topPosition + "px";
-		moveThing(bullet, 0);
+		bullet.style.top = plane.offsetTop + direction * topPosition + "px"; // top position of bullet;
+		moveThing(bullet, 0, -1); // move bullet;
 }
 
 /**
@@ -87,12 +86,12 @@ function bulletShoot(color, centerPosition, topPosition, direction){
  * 
  */
 
-function moveThing(thing, topLimit){
+function moveThing(thing, topLimit, direction){
 	let moveID = setInterval(function() { // set timer ID;
-		thing.style.top = thing.offsetTop - 10 + "px"; // plane direction
-		if (thing.offsetTop < topLimit){
-			clearInterval(moveID);
-			thing.remove();
+		thing.style.top = thing.offsetTop + direction * 10 + "px"; // plane direction
+		if (thing.offsetTop < topLimit){ // if thing out of the game field;
+			clearInterval(moveID); // stop timer;
+			thing.remove(); // remove thing;
 		}
 	}, 100);
 }
