@@ -7,10 +7,12 @@ var btnReload = document.querySelector("#GameReloadButton");
 
 // dinamic objects
 var plane = document.querySelector("#Airplane");
-var gameOver = false;
+var ship = document.querySelector("#FuckingWarship");
 
 // counters-indicators
 var shipCounter = 999;
+var shipCountIndicator = document.querySelector("#ShipsCounter");
+var gameOver = false;
 
 // var planeDirection = 0;
 // var planeSpeed = 100; // so we can modificate planeSpeed in game;
@@ -19,6 +21,7 @@ var shipCounter = 999;
 btnStart.onclick = function(){
 	startWindow.style.display = "none"; // hide start window;
 	gameWindow.style.display = "block"; // show game;
+	// shipGo();
 }
 
 
@@ -87,11 +90,22 @@ function bulletShoot(color, centerPosition, topPosition, direction){
  */
 
 function moveThing(thing, topLimit, direction){
+	var enemy = document.querySelector("#FuckingWarship"); // initialise enemy to distroy; need worck to more than one enemy
 	let moveID = setInterval(function() { // set timer ID;
 		thing.style.top = thing.offsetTop + direction * 10 + "px"; // plane direction
 		if (thing.offsetTop < topLimit){ // if thing out of the game field;
 			clearInterval(moveID); // stop timer;
 			thing.remove(); // remove thing;
+		}
+		if (thing.offsetTop < enemy.offsetTop + enemy.clientHeight - 50 // if enemy coord. match bullet coord.
+			&& thing.offsetLeft > enemy.offsetLeft 
+			&& thing.offsetLeft < enemy.offsetLeft + enemy.clientWidth){
+			thing.remove(); // remove bullet;
+			enemy.remove(); // remove ship;
+			shipCounter--; // update counter;
+			console.log(shipCounter);
+			console.dir(shipCountIndicator);
+			shipCountIndicator.innerHTML = shipCounter + " SHIPS LEFT"; // update indicator;
 		}
 	}, 100);
 }
