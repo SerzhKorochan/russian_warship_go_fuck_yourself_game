@@ -1,36 +1,40 @@
-// static objects
+//# ::VARIABLES::
+//# static objects
 var gameWindow = document.querySelector("#GameArea");
 var startWindow = document.querySelector("#StartGame");
 var endWindow = document.querySelector("#EndGame");
 var btnStart = document.querySelector("#StartButton");
 var btnReload = document.querySelector("#GameReloadButton");
 
-// dinamic objects
+//# dinamic objects
 var plane = document.querySelector("#Airplane");
 var ship = document.querySelector("#FuckingWarship");
 
-// counters-indicators
-var shipCounter = 999;
+//# counters-indicators
+var shipCounter = 9;
 var shipCountIndicator = document.querySelector("#ShipsCounter");
 var gameOver = false;
 
 // var planeDirection = 0;
 // var planeSpeed = 100; // so we can modificate planeSpeed in game;
 
-// == START GAME ==
+//# = START GAME =
 btnStart.onclick = function(){
 	startWindow.style.display = "none"; // hide start window;
 	gameWindow.style.display = "block"; // show game;
-	// shipGo();
+	// shipGo(); // add targets;
 }
 
 
-// driving the plane
+//# plane controls
 document.onkeydown = function(event){ // pressing keys
 	// console.dir(event);// to knew what key was pressed;
 	movePlane(event);
-	shooting(event); // arrow Space keyCode = 40
+	shooting(event); // Space keyCode = 40
 }
+
+
+//# ::FUNCTIONS::
 
 /**
  * control plane move function. If apropriate keys is pressed than move plane left or right.
@@ -97,23 +101,33 @@ function moveThing(thing, topLimit, direction){
 	let moveID = setInterval(function() { // set timer ID;
 		thing.style.top = thing.offsetTop + direction * 10 + "px"; // plane direction
 		if (thing.offsetTop < topLimit){ // if thing out of the game field;
-			clearInterval(moveID); // stop timer;
+			clearInterval(moveID); // stop animation timer;
 			thing.remove(); // remove thing;
 		}
-		if (thing.offsetTop < enemy.offsetTop + enemy.clientHeight - 50 // if enemy coord. match bullet coord.
-			&& thing.offsetLeft > enemy.offsetLeft 
-			&& thing.offsetLeft < enemy.offsetLeft + enemy.clientWidth){
-			thing.remove(); // remove bullet;
-			enemy.remove(); // remove ship;
-			shipCounter--; // update counter;
-			console.log(shipCounter);
-			console.dir(shipCountIndicator);
-			shipCountIndicator.innerHTML = shipCounter + " SHIPS LEFT"; // update indicator;
 
-// == END GAME ==
-			if (shipCounter == 0){
-				endWindow.style.display = "block";
-				gameWindow.style.display = "none";
+	//# target missing
+	if (thing == ship){
+//TODO code if ship reach out of game field (do not remove ship, it is done in base code)
+	}
+
+	//# target destroing
+		if (thing == bullet){
+			if (thing.offsetTop < enemy.offsetTop + enemy.clientHeight - 50 // if enemy coord. match bullet coord.
+				&& thing.offsetLeft > enemy.offsetLeft 
+				&& thing.offsetLeft < enemy.offsetLeft + enemy.clientWidth){
+				thing.remove(); // remove bullet;
+				enemy.remove(); // remove ship;
+//TODO  add new ship (random)
+				shipCounter--; // update counter;
+				console.log(shipCounter);
+				console.dir(shipCountIndicator);
+				shipCountIndicator.innerHTML = shipCounter + " SHIPS LEFT"; // update indicator;
+
+	//# = END GAME =
+				if (shipCounter == 0){
+					endWindow.style.display = "block";
+					gameWindow.style.display = "none";
+				}
 			}
 		}
 	}, 100);
