@@ -17,7 +17,7 @@ var gameOver = false;
 // var planeDirection = 0;
 // var planeSpeed = 100; // so we can modificate planeSpeed in game;
 
-// startGame
+// == START GAME ==
 btnStart.onclick = function(){
 	startWindow.style.display = "none"; // hide start window;
 	gameWindow.style.display = "block"; // show game;
@@ -33,8 +33,8 @@ document.onkeydown = function(event){ // pressing keys
 }
 
 /**
- * 
- *  
+ * control plane move function. If apropriate keys is pressed than move plane left or right.
+ * # event - keyCode.
  */
 
 function movePlane(event){
@@ -50,27 +50,28 @@ function movePlane(event){
 
 
 /**
- * 
- * 
+ * Plane shoting function. Create and move blue and yellow bullets if apropriate key pressed;
+ * # event - keyCode;
  */
 
 var pause = false; // timeout for shooting;
 function shooting(event) {
 	if (event.keyCode == 32 && pause == false){ // press -space-
-		bulletShoot("blue", 45, 45, 1);
-		bulletShoot("yellow", 105, 45, 1);
+		bulletShoot("blue", 45, 45, -1);
+		bulletShoot("yellow", 105, 45, -1);
 		pause = true; // shooting timeout;
 	} else {
-		setTimeout(function() { // pausing;
-			console.log("boom");
-		}, 1000); // 1 sec.
+		setTimeout(function() {}, 1000); // pausing for  1 sec.
 		pause = false;
 	}
 }
 
 /**
- * 
- * 
+ * create and move bullet function;
+ * # color - color of bullet;
+ * # centerPosition - starting X-coord. of bullet;
+ * # topPosition - starting Y -coord. of bullet;
+ * # direction - direction of the move (+1 - top2down; -1 - down2top)
  */
 
 function bulletShoot(color, centerPosition, topPosition, direction){
@@ -79,14 +80,16 @@ function bulletShoot(color, centerPosition, topPosition, direction){
 	bullet.style.background = color; // styling bullet color;
 	gameWindow.appendChild(bullet); // add bullet;
 		bullet.style.display = "block"; // display bullet;
-		bullet.style.left = plane.offsetLeft + direction * centerPosition + "px";// y-coordinate of bullet = y-coord. of the player; 140 - to mutch gun coordinate;
-		bullet.style.top = plane.offsetTop + direction * topPosition + "px"; // top position of bullet;
-		moveThing(bullet, 0, -1); // move bullet;
+		bullet.style.left = plane.offsetLeft + centerPosition + "px";// y-coordinate of bullet = y-coord. of the player; 140 - to mutch gun coordinate;
+		bullet.style.top = plane.offsetTop + topPosition + "px"; // top position of bullet;
+		moveThing(bullet, 0, direction); // move bullet;
 }
 
 /**
- * 
- * 
+ * anything move function. move an object (top2down or reverce)
+ * # thing - object to move;
+ * # topLimit - game window border limit (to remove thing);
+ * # direction - direction of the move (+1 - top2down; -1 - down2top)
  */
 
 function moveThing(thing, topLimit, direction){
@@ -106,6 +109,12 @@ function moveThing(thing, topLimit, direction){
 			console.log(shipCounter);
 			console.dir(shipCountIndicator);
 			shipCountIndicator.innerHTML = shipCounter + " SHIPS LEFT"; // update indicator;
+
+// == END GAME ==
+			if (shipCounter == 0){
+				endWindow.style.display = "block";
+				gameWindow.style.display = "none";
+			}
 		}
 	}, 100);
 }
