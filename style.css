@@ -5,7 +5,7 @@
 }
 #DocumentFrame {
     position: relative;
-    height: 1080px;
+    height: 768px;
     background: url(images/RussiaAmarantBlueDark.jpg) center center/cover
         no-repeat;
 }
@@ -31,7 +31,6 @@
     text-align: center;
     color: #000000;
 }
-
 
 #WarshipImg {
     width: 80px;
@@ -171,20 +170,20 @@
 
 #GameArea {
     position: absolute;
-    width: 928px;
-    height: 980px;
-    left: calc(50% - 464px);
-    top: calc(50% - 490px);
+    width: 700px;
+    height: 700px;
+    left: calc(50% - 350px);
+    top: calc(50% - 350px);
     background: rgba(4, 2, 3, 0.8);
     border: 15px solid #d7f5f7;
 }
 
 #ShipsCounter {
     position: absolute;
-    width: 300px;
-    height: 82px;
-    left: calc(100% - 300px);
-    top: calc(100% - 82px);
+    width: 245px;
+    height: 60px;
+    left: calc(100% - 245px);
+    top: calc(100% - 60px);
     font-family: "Phosphate";
     font-style: normal;
     font-weight: bold;
@@ -196,18 +195,18 @@
 
 #FuckingWarship {
     position: absolute;
-    width: 130px;
-    height: 130px;
-    left: calc(50% - 65px);
-    top: 21px;
+    width: 100px;
+    height: 100px;
+    left: calc(50% - 50px);
+    top: 11px;
 }
 
 #Airplane {
     position: absolute;
-    width: 150px;
-    height: 150px;
-    left: calc(50% - 75px);
-    top: calc(100% - 150px);
+    width: 120px;
+    height: 120px;
+    left: calc(50% - 60px);
+    top: calc(100% - 131px);
 }
 
 .bullet {
@@ -219,7 +218,8 @@
     top: 20%;
     left: 20%;
     border-radius: 2px 7px 7px 2px;
-    box-shadow: 0 0 5px #fff, 0 0 8px #fff, 0 0 12px #fff, 0 0 15px red, 0 0 25px red;
+    box-shadow: 0 0 5px #fff, 0 0 8px #fff, 0 0 12px #fff, 0 0 15px red,
+        0 0 25px red;
     z-index: 5;
     display: none;
 }
