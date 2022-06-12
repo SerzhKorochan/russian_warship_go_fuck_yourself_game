@@ -106,12 +106,12 @@ function moveThing(thing, topLimit, direction){
 		}
 
 	//# target missing
-	if (thing == ship){
+	if (thing.className == "ship"){
 //TODO code if ship reach out of game field (do not remove ship, it is done in base code)
 	}
 
 	//# target destroing
-		if (thing == bullet){
+		if (thing.className == "bullet"){
 			if (thing.offsetTop < enemy.offsetTop + enemy.clientHeight - 50 // if enemy coord. match bullet coord.
 				&& thing.offsetLeft > enemy.offsetLeft 
 				&& thing.offsetLeft < enemy.offsetLeft + enemy.clientWidth){
