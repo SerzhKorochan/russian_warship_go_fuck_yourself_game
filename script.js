@@ -54,7 +54,7 @@ function movePlane(event) {
             // correct game window border limit
             plane.style.left = plane.offsetLeft - 40 + "px";
         }
-        if (event.keyCode == 39 && plane.offsetLeft < 734) {
+        if (event.keyCode == 39 && plane.offsetLeft < 534) {
             // same
             plane.style.left = plane.offsetLeft + 40 + "px";
         }
