@@ -196,7 +196,7 @@ body {
 
 #FuckingWarship {
     position: absolute;
-    background: url("images/Fucking\ Warship.png") no-repeat;
+    background: url("images/Fucking\ Warship.png") center/100% no-repeat;
     width: 100px;
     height: 100px;
     left: calc(50% - 50px);
@@ -234,4 +234,3 @@ body {
     left: calc(50% - 75px);
     top: 720px;
 }
-

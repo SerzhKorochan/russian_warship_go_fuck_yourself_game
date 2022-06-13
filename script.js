@@ -21,11 +21,8 @@ const ALLOWED_SHIPS_QUANTITY = 999;
 // var planeDirection = 0;
 // var planeSpeed = 100; // so we can modificate planeSpeed in game;
 
-
-var explosion = document.querySelector('#explosion');
-var audioplayer = document.querySelector('audio');
-
-
+var explosion = document.querySelector("#explosion");
+var audioplayer = document.querySelector("audio");
 
 //# = START GAME =
 btnStart.onclick = function () {
@@ -116,87 +113,79 @@ function bulletShoot(color, centerPosition, topPosition, direction) {
  * # direction - direction of the move (+1 - top2down; -1 - down2top)
  */
 
-function moveThing(thing, topLimit, direction){
-	var enemy = document.querySelector("#FuckingWarship"); // initialise enemy to distroy; need worck to more than one enemy
-	let moveID = setInterval(function() { // set timer ID;
-		thing.style.top = thing.offsetTop + direction * 10 + "px"; // plane direction
-		if (thing.offsetTop < topLimit){ // if thing out of the game field;
-			clearInterval(moveID); // stop animation timer;
-			thing.remove(); // remove thing;
-		}
+function moveThing(thing, topLimit, direction) {
+    var enemy = document.querySelector("#FuckingWarship"); // initialise enemy to distroy; need worck to more than one enemy
+    let moveID = setInterval(function () {
+        // set timer ID;
+        thing.style.top = thing.offsetTop + direction * 10 + "px"; // plane direction
+        if (thing.offsetTop < topLimit) {
+            // if thing out of the game field;
+            clearInterval(moveID); // stop animation timer;
+            thing.remove(); // remove thing;
+        }
 
-	//# target missing
-	if (thing.className == "ship"){
-//TODO code if ship reach out of game field (do not remove ship, it is done in base code)
-	}
+        //# target missing
+        if (thing.className == "ship") {
+            //TODO code if ship reach out of game field (do not remove ship, it is done in base code)
+        }
 
-	//# target destroing
-		if (thing.className == "bullet"){
-			if (thing.offsetTop < enemy.offsetTop + enemy.clientHeight - 50 // if enemy coord. match bullet coord.
-				&& thing.offsetLeft > enemy.offsetLeft 
-				&& thing.offsetLeft < enemy.offsetLeft + enemy.clientWidth){
-				thing.remove(); // remove bullet;
-				enemy.remove(); // remove ship;
-//TODO  add new ship (random)
-				shipCounter--; // update counter;
-				console.log(shipCounter);
-				console.dir(shipCountIndicator);
-				shipCountIndicator.innerHTML = shipCounter + " SHIPS LEFT"; // update indicator;
+        //# target destroing
+        if (thing.className == "bullet") {
+            if (
+                thing.offsetTop < enemy.offsetTop + enemy.clientHeight - 50 && // if enemy coord. match bullet coord.
+                thing.offsetLeft > enemy.offsetLeft &&
+                thing.offsetLeft < enemy.offsetLeft + enemy.clientWidth
+            ) {
+                thing.remove(); // remove bullet;
+                enemy.remove(); // remove ship;
+                //TODO  add new ship (random)
+                shipCounter--; // update counter;
+                console.log(shipCounter);
+                console.dir(shipCountIndicator);
+                shipCountIndicator.innerHTML = shipCounter + " SHIPS LEFT"; // update indicator;
 
-	//# = END GAME =
-				if (shipCounter == 0){
-					endWindow.style.display = "block";
-					gameWindow.style.display = "none";
-				}
-			}
-		}
-	}, 100);
+                //# = END GAME =
+                if (shipCounter == 0) {
+                    endWindow.style.display = "block";
+                    gameWindow.style.display = "none";
+                }
+            }
+        }
+    }, 100);
 }
 
-
-
-
-
-
-var position = 100;
+var position = 50;
 // creating a new enemy
 function CreateWarship() {
-	let IntervalWarship = setInterval(function() {
-		let enemy = document.createElement ('div');
-		enemy.id = "FuckingWarship";
-		if(position < 800) {
-			enemy.style.left = position + 'px';
-			position = position + 100;
-		} else {
-			position = 100;
-			
-		}
-		gameWindow.appendChild(enemy);
-		moveWarship(enemy);
-		
-
-	}, 5000);
+    let IntervalWarship = setInterval(function () {
+        let enemy = document.createElement("div");
+        enemy.id = "FuckingWarship";
+        if (position + 50 < gameWindow.clientWidth) {
+            enemy.style.left = position + "px";
+            position = position + 50;
+        } else {
+            position = 50;
+        }
+        gameWindow.appendChild(enemy);
+        moveWarship(enemy);
+    }, 500);
 }
 
-
 // enemy movement
-function  moveWarship(enemy) {
-  	setInterval(function() {
-    enemy.style.top = enemy.offsetTop + 1 + 'px';
-	if(enemy.offsetTop > 800) {     // the enemy has come down
-		enemy.remove();
-		audioplayer.play();
-		explosion.style.left = plane.style.left;
-		explosion.style.display = 'block';
-		endWindow.style.display = 'block';
-		plane.style.display = 'none';
-		clearInterval(IntervalWarship);
-		
-				
-	} 
-	
-	}, 10);
-	
+function moveWarship(enemy) {
+    setInterval(function () {
+        enemy.style.top = enemy.offsetTop + 1 + "px";
+        if (enemy.offsetTop > 800) {
+            // the enemy has come down
+            enemy.remove();
+            audioplayer.play();
+            explosion.style.left = plane.style.left;
+            explosion.style.display = "block";
+            endWindow.style.display = "block";
+            plane.style.display = "none";
+            clearInterval(IntervalWarship);
+        }
+    }, 10);
 }
 
 CreateWarship();

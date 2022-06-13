@@ -7,37 +7,32 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
     </head>
     <body>
-        <audio>
-            <source src="audio/odinochnyiy-vzryiv.mp3">
-        </audio>
-        
-        <div id="DocumentFrame">
-            <div id="StartGame">
-                <h1>RUSSIAN WARSHIP</h1>
-                <img src="images/Warship img.png" alt="" id="WarshipImg" />
-                <h2>GO <span>FUCK</span> YOURSELF!</h2>
-                <button id="StartButton">FIGHT</button>
-            </div>
+        <div id="StartGame">
+            <h1>RUSSIAN WARSHIP</h1>
+            <img src="images/Warship img.png" alt="" id="WarshipImg" />
+            <h2>GO <span>FUCK</span> YOURSELF!</h2>
+            <button id="StartButton">FIGHT</button>
+        </div>
 
-            <div id="EndGame" style="display: none;">
-                <h2>YOU DESTROYED</h2>
-				<div id="DestroyedShipsBlock">
-					<div id="DestroyedShipsCnt">999</div>
-                	<img src="images/Warship img.png" alt="" />
-				</div>
-                <h3>RUSSIAN <span>WARSHIPS!</span></h3>
-                <button id="GameReloadButton">AGAIN</button>
-            </div>
-
-            <div id="GameArea" style="display: none;">
-                <div id="ShipsCounter">999 SHIPS LEFT</div>
-                <img src="images/Airplane.png" id="Airplane">
-                <div id="explosion" style="display: none;"></div>
-
+        <div id="EndGame" style="display: none">
+            <h2>YOU DESTROYED</h2>
+            <div id="DestroyedShipsBlock">
+                <div id="DestroyedShipsCnt">999</div>
+                <img src="images/Warship img.png" alt="" />
             </div>
             <h3>RUSSIAN <span>WARSHIPS!</span></h3>
             <button id="GameReloadButton">AGAIN</button>
         </div>
+
+        <div id="GameArea" style="display: none">
+            <div id="ShipsCounter">999 SHIPS LEFT</div>
+            <img src="images/Airplane.png" id="Airplane" />
+            <div id="explosion" style="display: none"></div>
+        </div>
+
+        <audio>
+            <source src="audio/odinochnyiy-vzryiv.mp3" />
+        </audio>
     </body>
 
     <script src="script.js"></script>
