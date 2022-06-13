@@ -5,6 +5,7 @@ var startWindow = document.querySelector("#StartGame");
 var endWindow = document.querySelector("#EndGame");
 var btnStart = document.querySelector("#StartButton");
 var btnReload = document.querySelector("#GameReloadButton");
+var intervalWarship = null;
 
 //# dinamic objects
 var plane = document.querySelector("#Airplane");
@@ -28,7 +29,7 @@ var audioplayer = document.querySelector("audio");
 btnStart.onclick = function () {
     startWindow.style.display = "none"; // hide start window;
     gameWindow.style.display = "block"; // show game;
-    // shipGo(); // add targets;
+    CreateWarship();
 };
 
 //# plane controls
@@ -154,38 +155,48 @@ function moveThing(thing, topLimit, direction) {
     }, 100);
 }
 
-var position = 50;
+/**
+ * Func which returns random num in range from min to max
+ */
+function randomNumber(min, max) {
+    return Math.floor(Math.random() * (max - min) + min);
+}
+
 // creating a new enemy
 function CreateWarship() {
-    let IntervalWarship = setInterval(function () {
+    intervalWarship = setInterval(function () {
         let enemy = document.createElement("div");
         enemy.id = "FuckingWarship";
-        if (position + 50 < gameWindow.clientWidth) {
-            enemy.style.left = position + "px";
-            position = position + 50;
-        } else {
-            position = 50;
-        }
+
+        let enemyWidth = 100;
+        let leftBorder = 5;
+        let rightBorder = gameWindow.clientWidth - enemyWidth;
+        let position = randomNumber(leftBorder, rightBorder);
+
+        enemy.style.left = position + "px";
         gameWindow.appendChild(enemy);
         moveWarship(enemy);
-    }, 500);
+    }, 4000);
 }
 
 // enemy movement
 function moveWarship(enemy) {
     setInterval(function () {
         enemy.style.top = enemy.offsetTop + 1 + "px";
-        if (enemy.offsetTop > 800) {
+        if (enemy.offsetTop > gameWindow.clientHeight - enemy.clientHeight) {
             // the enemy has come down
             enemy.remove();
             audioplayer.play();
             explosion.style.left = plane.style.left;
             explosion.style.display = "block";
             endWindow.style.display = "block";
+            gameWindow.style.display = "none";
             plane.style.display = "none";
-            clearInterval(IntervalWarship);
+            clearInterval(intervalWarship);
+
+            let destroyedShipsCnt =
+                document.querySelector("#DestroyedShipsCnt");
+            destroyedShipsCnt.innerText = ALLOWED_SHIPS_QUANTITY - shipCounter;
         }
     }, 10);
 }
-
-CreateWarship();

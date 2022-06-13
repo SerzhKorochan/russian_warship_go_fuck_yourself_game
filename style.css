@@ -75,7 +75,8 @@ body {
     border: none;
 }
 
-#StartButton:hover {
+#StartButton:hover,
+#GameReloadButton:hover {
     background: #8a7868;
 }
 
@@ -119,6 +120,7 @@ body {
     font-size: 40px;
     line-height: 50px;
     display: flex;
+    justify-content: center;
     align-items: center;
     text-align: center;
     color: #000000;
@@ -228,9 +230,9 @@ body {
 
 #explosion {
     position: absolute;
-    width: 300px;
-    height: 300px;
-    background: url("images/YQDj.gif") no-repeat;
-    left: calc(50% - 75px);
-    top: 720px;
+    width: 120px;
+    height: 120px;
+    background: url("images/YQDj.gif") center/100% no-repeat;
+    top: calc(100% - 131px);
+    left: calc(50% - 60px);
 }
