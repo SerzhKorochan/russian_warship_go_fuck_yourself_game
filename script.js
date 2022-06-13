@@ -18,6 +18,12 @@ var gameOver = false;
 // var planeDirection = 0;
 // var planeSpeed = 100; // so we can modificate planeSpeed in game;
 
+
+var explosion = document.querySelector('#explosion');
+var audioplayer = document.querySelector('audio');
+
+
+
 //# = START GAME =
 btnStart.onclick = function(){
 	startWindow.style.display = "none"; // hide start window;
@@ -132,3 +138,51 @@ function moveThing(thing, topLimit, direction){
 		}
 	}, 100);
 }
+
+
+
+
+
+
+var position = 100;
+// creating a new enemy
+function CreateWarship() {
+	let IntervalWarship = setInterval(function() {
+		let enemy = document.createElement ('div');
+		enemy.id = "FuckingWarship";
+		if(position < 800) {
+			enemy.style.left = position + 'px';
+			position = position + 100;
+		} else {
+			position = 100;
+			
+		}
+		gameWindow.appendChild(enemy);
+		moveWarship(enemy);
+		
+
+	}, 5000);
+}
+
+
+// enemy movement
+function  moveWarship(enemy) {
+  	setInterval(function() {
+    enemy.style.top = enemy.offsetTop + 1 + 'px';
+	if(enemy.offsetTop > 800) {     // the enemy has come down
+		enemy.remove();
+		audioplayer.play();
+		explosion.style.left = plane.style.left;
+		explosion.style.display = 'block';
+		endWindow.style.display = 'block';
+		plane.style.display = 'none';
+		clearInterval(IntervalWarship);
+		
+				
+	} 
+	
+	}, 10);
+	
+}
+
+CreateWarship();
