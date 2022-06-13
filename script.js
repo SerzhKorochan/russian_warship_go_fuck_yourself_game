@@ -46,17 +46,22 @@ btnReload.onclick = function () {
 /**
  * control plane move function. If apropriate keys is pressed than move plane left or right.
  * # event - keyCode.
+ * TODO сделать так, что бы границы перемещения самолета по горизонтали определялись динамически в зависимости от размера игрового поля +++ done
  */
 
 function movePlane(event) {
     if (event.keyCode == 37 || event.keyCode == 39) {
-        if (event.keyCode == 37 && plane.offsetLeft > 14) {
+        let step = 10;
+        let leftBorder = 5;
+        let rightBorder = gameWindow.clientWidth - plane.clientWidth - 6;
+
+        if (event.keyCode == 37 && plane.offsetLeft >= leftBorder) {
             // correct game window border limit
-            plane.style.left = plane.offsetLeft - 40 + "px";
+            plane.style.left = plane.offsetLeft - step + "px";
         }
-        if (event.keyCode == 39 && plane.offsetLeft < 534) {
+        if (event.keyCode == 39 && plane.offsetLeft < rightBorder) {
             // same
-            plane.style.left = plane.offsetLeft + 40 + "px";
+            plane.style.left = plane.offsetLeft + step + "px";
         }
     }
 }
